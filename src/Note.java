@@ -34,6 +34,6 @@ public class Note {
 
     @Override
     public String toString() {
-        return ". "+ title + "(" +status + ")";
+        return  title +" "+ time+" "+ status ;
     }
 }

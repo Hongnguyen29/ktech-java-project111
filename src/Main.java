@@ -34,7 +34,7 @@ public class Main {
 
         int input = Integer.parseInt(br.readLine());
         if(input == 1) {
-            Todo_1.Create();
+            Todo_Create.Create();
             List<Note> newNotes = readData();
             for (int i = 0; i < newNotes.size(); i++) {
                 Note note = newNotes.get(i);
@@ -45,7 +45,7 @@ public class Main {
             }
         }
         else if(input == 2) {
-            Todo_2.Edit();
+            Todo_Edit.Edit();
             List<Note> newNotes = readData();
             for (int i = 0; i < newNotes.size(); i++) {
                 Note note = newNotes.get(i);
@@ -55,19 +55,44 @@ public class Main {
                 ));
             }
         }
+        else if(input == 3) {
+            Todo_Finish.Finish();
+            List<Note> newNotes = readData();
+            for (int i = 0; i < newNotes.size(); i++) {
+                Note note = newNotes.get(i);
+                System.out.println(String.format(
+                        "%d.  %s %s", i + 1, note.getTitle(),
+                        note.getStatus()
+                ));
+            }
+        }
+        else if(input == 4) {
+            Todo_Delete.Delete();
+            List<Note> newNotes = readData();
+            for (int i = 0; i < newNotes.size(); i++) {
+                Note note = newNotes.get(i);
+                System.out.println(String.format(
+                        "%d. %s %s", i+1, note.getTitle(),
+                        note.getStatus()
+                ));
+            }
+        }
+        else if(input == 5) {
+            System.exit(0);
+        }
     }
     public static void writer(List<Note> lst) {
         try (FileWriter fw = new FileWriter("list.csv");
              BufferedWriter bw = new BufferedWriter(fw))
 
-        {   StringBuilder lb = new StringBuilder();
-            String line = lb.toString();
+        {
             for (Note a : lst){
-            lb.append(a.getTitle()).append(',');
-            lb.append(a.getTime()).append(',');
-            lb.append(a.getStatus());
-            bw.write(line);
-            bw.newLine();
+                StringBuilder lb = new StringBuilder();
+                lb.append(a.getTitle()).append(',');
+                lb.append(a.getTime()).append(',');
+                lb.append(a.getStatus());
+                bw.write(lb.toString());
+                bw.newLine();
         }
         }catch (IOException e) {
             System.out.println(e.getMessage());

@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Todo_1 {
+public class Todo_Create {
     public static List<Note> Create () throws IOException {
         List<Note> notec = new ArrayList<>();
         System.out.println("Create :");
@@ -12,15 +12,13 @@ public class Todo_1 {
             String title = rd.readLine();
             System.out.println("Time :");
             String time = rd.readLine();
-            System.out.println("Status :");
-            String status = rd.readLine();
+            String status =" ";
             Note n1 = new Note(title, time, status);
             notec.add(n1);
             System.out.println("Saved !!");
             System.out.println("add more ?? [y/n] : ");
             String hasNext = rd.readLine();
             if (hasNext.equals("n")) {break;
-
             }
         }
         try(
@@ -38,30 +36,7 @@ public class Todo_1 {
                 }catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-
-        List<Note> notec2 = new ArrayList<>();
-        try
-                (FileReader fr = new FileReader("list.csv");
-                 BufferedReader br = new BufferedReader(fr)) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] elements = line.split(",");
-                notec2.add(new Note(
-                        elements[0],
-                        elements[1],
-                        elements[2]));
-            }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } return notec2;
-           /*  List<Note> newNotes = Todo.Create();
-            for (int i = 0; i < newNotes.size(); i++) {
-                Note note = newNotes.get(i);
-                System.out.println(String.format(
-                        "%d.  %s %s", i + 1, note.getTitle(),
-                        note.getStatus()
-                ));
-            }*/
-
+        List<Note> newNote2 = Main.readData();
+        return newNote2;
     }
 }
