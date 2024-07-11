@@ -36,7 +36,7 @@ public class Todo_Create {
                 }catch (IOException e) {
                 System.out.println(e.getMessage());
             }
-        List<Note> newNote2 = Main.readData();
+        List<Note> newNote2 = ReadWriterPrint.readData();
         return newNote2;
     }
 }

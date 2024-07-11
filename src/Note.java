@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Note {
     private String title;
     private String time;
@@ -7,6 +9,7 @@ public class Note {
         this.time = time;
         this.status = status;
     }
+
 
     public String getTime() {
         return time;
